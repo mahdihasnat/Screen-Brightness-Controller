@@ -10,6 +10,9 @@ from tkinter import Tk, Scale, HORIZONTAL, mainloop
 import screen_brightness_control as sbc
 
 def set_brightness(args):
+    """
+	Set the brightness of the screen.
+    """
     try:
         sbc.set_brightness(args)
     except sbc.ScreenBrightnessError as error:
@@ -17,12 +20,17 @@ def set_brightness(args):
 
 
 def slider():
+    """
+    Create a slider to control the brightness of the screen.
+    """
     master = Tk()
     master.title('Screen_Brightness_Control')
-    w = Scale(master, from_=0, to=100,tickinterval=5,length=600 ,
+
+    window = Scale(master, from_=0, to=100,tickinterval=5,length=600 ,
               orient=HORIZONTAL , command = set_brightness )
-    w.set(sbc.get_brightness())
-    w.pack()
+
+    window.set(sbc.get_brightness())
+    window.pack()
     mainloop()
 
 slider()
